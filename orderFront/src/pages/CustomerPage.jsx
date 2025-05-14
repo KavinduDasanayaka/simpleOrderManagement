@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../components/Header";
 import { useState, useMemo } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { deductIngredients } from '../redux/inventorysSlice';
+import { deductIngredients } from '../redux/inventorysSlice'; 
+import { addOrder } from '../redux/orderSlice';
 
 function CustomerPage() {
     const [order, setOrder] = useState("pepperoni");
@@ -10,6 +11,7 @@ function CustomerPage() {
     const [orderId, setOrderId] = useState(null);
     const dispatch = useDispatch();
     const inventory = useSelector((state) => state.inventory.inventory);
+    const orders = useSelector((state) => state.order.orders);
 
     // Define pizza recipes and costs
     const pizzaCosts = {
@@ -64,14 +66,25 @@ function CustomerPage() {
         }
         dispatch(deductIngredients({ ingredients: ingredientsToDeduct }));
 
+        // Dispatch action to add order
+        dispatch(addOrder({
+            orderId: newOrderId,
+            pizzaType: order,
+            quantity,
+            totalCost,
+            status: 'Placed'
+        }));
+
         // Log order details for backend API
-        console.log({ order, quantity, totalCost, orderId: newOrderId });
+        console.log({ order, quantity, totalCost, orderId: newOrderId, status: 'Placed' });
     };
+
+    // Find the latest order for display
+    const currentOrder = orders.find(o => o.orderId === orderId);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-cyan-600 to-blue-400">
             <Header />
-
             <div className="flex flex-col items-center mt-10">
                 <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-2">
                     Welcome to the Customer Page
@@ -86,7 +99,6 @@ function CustomerPage() {
                     onSubmit={handleSubmit}
                 >
                     <h2 className="text-3xl font-bold text-cyan-700 mb-6 text-center">Order Form</h2>
- Achieving Greatness
                     <label className="block text-lg font-medium text-cyan-800 mb-2" htmlFor="order">
                         Select your order:
                     </label>
@@ -151,11 +163,13 @@ function CustomerPage() {
                     >
                         Submit Order
                     </button>
-                    {orderId && (
+                    {orderId && currentOrder && (
                         <div className="mt-6 text-center text-green-700 font-semibold">
                             Order submitted! Your order ID is: <span className="font-mono">{orderId}</span>
                             <br />
                             Total Cost: ${totalCost.toFixed(2)} for {quantity} {order} pizza(s)
+                            <br />
+                            Status: {currentOrder.status}
                         </div>
                     )}
                 </form>

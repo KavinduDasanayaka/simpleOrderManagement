@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
-import inventoryReducer from './inventorySlice';
+import inventoryReducer from './inventorysSlice';
 import orderReducer from './orderSlice';
 
 const store = configureStore({

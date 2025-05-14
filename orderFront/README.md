@@ -1,12 +1,37 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Simple OrderManagement System
 
-Currently, two official plugins are available:
+The Pizza Shop Application is a user-friendly React web app that streamlines pizza ordering and management. Customers can easily order Pepperoni, Cheesy, or Onion pizzas, view costs, check ingredient availability, and track order statuses (Placed, Preparing, Dispatched, Delivered). Owners have a powerful dashboard to monitor and update inventory, add or remove ingredients, manage orders, and adjust statuses. Built with Redux for state management and Tailwind CSS for a sleek interface, it ensures a seamless experience for both customers and owners.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img  src="https://skillicons.dev/icons?i=react,nodejs,vite,redux,tailwind,vscode,github"  width=350>
 
-## Expanding the ESLint configuration
+## 🚀 About Me
+I'm a frontend developer...
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/kavindud)
+
+
+
+## Deployment
+
+Clone the project
+
+```bash
+  git clone 
+```
+
+Install dependencies
+
+```bash
+  cd orderFront
+  npm i
+```
+
+To deploy this project run
+
+```bash
+  npm run dev
+```
+
